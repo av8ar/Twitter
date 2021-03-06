@@ -13,7 +13,8 @@ class HomeTableViewController: UITableViewController {
     var tweetArray = [NSDictionary]()
     var numberOfTweets : Int!
     
-        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTweet()
@@ -59,6 +60,10 @@ class HomeTableViewController: UITableViewController {
         if let imageData = data {
             cell.profileImageView.image = UIImage(data: imageData)
         }
+        
+        cell.setFavorite(isFavorited: tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        
         return cell
     }
     
